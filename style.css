@@ -32,10 +32,38 @@ body{
     top: 10%;
     left: 80%;
 }
+#range2{
+    position: absolute;
+    background: none;
+    width: 100px;
+    top: 10%;
+    left: 80%;
+}
+#range3{
+    position: absolute;
+    background: none;
+    width: 100px;
+    top: 10%;
+    left: 80%;
+}
 #val{
     position: absolute;
     background: none;
     width: 100px;
     top: 10%;
+    left: 4%; 
+}
+#val1{
+    position: absolute;
+    background: none;
+    width: 100px;
+    top: 14%;
+    left: 4%; 
+}
+#val2{
+    position: absolute;
+    background: none;
+    width: 100px;
+    top: 18%;
     left: 4%; 
 }
