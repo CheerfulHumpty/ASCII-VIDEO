@@ -31,6 +31,7 @@ body{
     width: 100px;
     top: 10%;
     left: 80%;
+    cursor: pointer;
 }
 #range2{
     position: absolute;
@@ -38,6 +39,7 @@ body{
     width: 100px;
     top: 10%;
     left: 80%;
+    cursor: pointer;
 }
 #range3{
     position: absolute;
@@ -45,6 +47,15 @@ body{
     width: 100px;
     top: 10%;
     left: 80%;
+    cursor: pointer;
+}
+#range4{
+    position: absolute;
+    background: none;
+    width: 100px;
+    top: 11%;
+    left: 95%;
+    cursor: pointer;
 }
 #val{
     position: absolute;
@@ -65,5 +76,12 @@ body{
     background: none;
     width: 100px;
     top: 18%;
+    left: 4%; 
+}
+#val3{
+    position: absolute;
+    background: none;
+    width: 100px;
+    top: 23%;
     left: 4%; 
 }
