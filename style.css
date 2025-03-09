@@ -1,0 +1,27 @@
+video{
+    position: absolute;
+    top: 3%;
+    left: 80%;
+}
+body{
+    background-color: black;
+    width: 100vw;
+    height: 100vh;
+    justify-content: center;
+    display: flex;
+}
+#button{
+    position: absolute;
+    background:none;
+    left: 5%;
+    top: 5%;
+    border: none;
+    width: 90px;
+    height: 50px;
+    background-color: black;
+    color: white;
+    text-decoration: line-through;
+}
+#button:hover{
+    cursor: pointer;
+}
