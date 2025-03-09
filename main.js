@@ -1,13 +1,18 @@
 let button = document.getElementById("button")
     let ontrue = false;
     let video;
-    let density = "Ñ@#W$9876543210?!abc;:+=-,._                      "
+    let density = "Ñ@#W$9876543210?!abc;:+=-,._                     "
+    let canvasWidth, canvasHeight;
+    
     function setup(){
-        createCanvas(windowWidth-50,windowHeight-25)
+        canvasWidth = windowWidth - 50;
+        canvasHeight = windowHeight - 50;
+        createCanvas(canvasWidth, canvasHeight)
         video  = createCapture(VIDEO)
         video.size(100,100)
         video.hide()
     }
+
     button.addEventListener("click",()=>{
          if(ontrue==false){
             button.innerHTML = "VIDEO ON"
@@ -22,43 +27,63 @@ let button = document.getElementById("button")
             ontrue  =  false
          }
     })
+
     let slider = document.getElementById("range")
-    let value = slider.value*0.3
+    let value = slider.value * 0.3
     let slider1 = document.getElementById("range2")
     let value1 = slider1.value
     let slider2 = document.getElementById("range3")
     let value2 = slider2.value
-    slider.addEventListener("input",()=>{
-        value = slider.value*0.3
+    let slider3 = document.getElementById("range4")
+    let value3 = slider3.value
+    slider3.addEventListener("input",()=>{
+        value3 = slider3.value
     })
+    slider.addEventListener("input",()=>{
+        value = slider.value * 0.3
+    })
+
     slider1.addEventListener("input",()=>{
         value1 = slider1.value
     })
+
     slider2.addEventListener("input",()=>{
         value2 = slider2.value
     })
+
     function draw(){
-         background(1)
-         console.log(value2)
-         console.log(value1)
-         video.size(value1,value2)
+         background(0)  // Set background to black to match the page style
+         
+         // Adjust video size
+         video.size(value1, value2)
          video.loadPixels()
-         var w = width/video.width
-         var h = width/video.height
-         for(var x=0;x<video.width;x++){
-            for(var y=0;y<video.height;y++){
-                var index = (x+y*video.width)*4
-                var r = video.pixels[index+0]
-                var g = video.pixels[index+1]
-                var b = video.pixels[index+2]
-                var len = density.length
-                var com = (r+g+b)/3
+
+         // Calculate scaling factors
+         let w = canvasWidth / video.width;
+         let h = canvasHeight / video.height;
+
+         // Draw ASCII characters to canvas
+         for (let x = 0; x < video.width; x++) {
+            for (let y = 0; y < video.height; y++) {
+                let index = (x + y * video.width) * 4
+                let r = video.pixels[index + 0]
+                let g = video.pixels[index + 1]
+                let b = video.pixels[index + 2]
+                let brightness = (r + g + b) / 3
+                let len = density.length
+                let charIndex = floor(map(brightness, 0, 255, 0, len))
+                
                 noStroke()
-                fill(255)
-                var charmap = floor(map(com,0,255,0,len))
+                fill(value3)
                 textSize(value)
-                textAlign(CENTER,CENTER)
-                text(density.charAt(charmap),x*w+w*0.5,y*h+h*0.5)
-            } 
+                textAlign(CENTER, CENTER)
+
+                // Avoid drawing out of bounds by considering the scaling factor
+                let posX = x * w + w * 0.5;
+                let posY = y * h + h * 0.5;
+                if (posX < canvasWidth && posY < canvasHeight) {
+                    text(density.charAt(charIndex), posX, posY)
+                }
+            }
          }
     }
