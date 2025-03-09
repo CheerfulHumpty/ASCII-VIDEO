@@ -13,8 +13,8 @@ body{
 #button{
     position: absolute;
     background:none;
-    left: 5%;
-    top: 5%;
+    left: 3%;
+    top: 3%;
     border: none;
     width: 90px;
     height: 50px;
@@ -24,4 +24,18 @@ body{
 }
 #button:hover{
     cursor: pointer;
+}
+#range{
+    position: absolute;
+    background: none;
+    width: 100px;
+    top: 10%;
+    left: 80%;
+}
+#val{
+    position: absolute;
+    background: none;
+    width: 100px;
+    top: 10%;
+    left: 4%; 
 }
