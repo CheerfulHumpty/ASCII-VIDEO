@@ -5,7 +5,7 @@ let button = document.getElementById("button")
     function setup(){
         createCanvas(windowWidth-50,windowHeight-25)
         video  = createCapture(VIDEO)
-        video.size(170,150)
+        video.size(70,200)
         video.hide()
     }
     button.addEventListener("click",()=>{
@@ -24,6 +24,9 @@ let button = document.getElementById("button")
     })
     function draw(){
          background(1)
+         let slider = document.getElementById("range")
+         let value = slider.value*0.3
+         console.log(value)
          video.loadPixels()
          var w = width/video.width
          var h = width/video.height
@@ -38,7 +41,7 @@ let button = document.getElementById("button")
                 noStroke()
                 fill(255)
                 var charmap = floor(map(com,0,255,0,len))
-                textSize(w*1.5)
+                textSize(value)
                 textAlign(CENTER,CENTER)
                 text(density.charAt(charmap),x*w+w*0.5,y*h+h*0.5)
             } 
