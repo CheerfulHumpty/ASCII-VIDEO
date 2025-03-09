@@ -5,7 +5,7 @@ let button = document.getElementById("button")
     function setup(){
         createCanvas(windowWidth-50,windowHeight-25)
         video  = createCapture(VIDEO)
-        video.size(70,200)
+        video.size(100,100)
         video.hide()
     }
     button.addEventListener("click",()=>{
@@ -22,11 +22,26 @@ let button = document.getElementById("button")
             ontrue  =  false
          }
     })
+    let slider = document.getElementById("range")
+    let value = slider.value*0.3
+    let slider1 = document.getElementById("range2")
+    let value1 = slider1.value
+    let slider2 = document.getElementById("range3")
+    let value2 = slider2.value
+    slider.addEventListener("input",()=>{
+        value = slider.value*0.3
+    })
+    slider1.addEventListener("input",()=>{
+        value1 = slider1.value
+    })
+    slider2.addEventListener("input",()=>{
+        value2 = slider2.value
+    })
     function draw(){
          background(1)
-         let slider = document.getElementById("range")
-         let value = slider.value*0.3
-         console.log(value)
+         console.log(value2)
+         console.log(value1)
+         video.size(value1,value2)
          video.loadPixels()
          var w = width/video.width
          var h = width/video.height
