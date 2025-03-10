@@ -52,17 +52,11 @@ let button = document.getElementById("button")
     })
 
     function draw(){
-         background(0)  // Set background to black to match the page style
-         
-         // Adjust video size
+         background(0) 
          video.size(value1, value2)
          video.loadPixels()
-
-         // Calculate scaling factors
          let w = canvasWidth / video.width;
          let h = canvasHeight / video.height;
-
-         // Draw ASCII characters to canvas
          for (let x = 0; x < video.width; x++) {
             for (let y = 0; y < video.height; y++) {
                 let index = (x + y * video.width) * 4
@@ -72,17 +66,14 @@ let button = document.getElementById("button")
                 let brightness = (r + g + b) / 3
                 let len = density.length
                 let charIndex = floor(map(brightness, 0, 255, 0, len))
-                
                 noStroke()
                 fill(value3)
                 textSize(value)
                 textAlign(CENTER, CENTER)
-
-                // Avoid drawing out of bounds by considering the scaling factor
-                let posX = x * w + w * 0.5;
-                let posY = y * h + h * 0.5;
-                if (posX < canvasWidth && posY < canvasHeight) {
-                    text(density.charAt(charIndex), posX, posY)
+                let posx = x * w + w * 0.5;
+                let posy = y * h + h * 0.5;
+                if (posx < canvasWidth && posy < canvasHeight) {
+                    text(density.charAt(charIndex), posx, posy)
                 }
             }
          }
