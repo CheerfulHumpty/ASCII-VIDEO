@@ -49,7 +49,7 @@ let canvasWidth, canvasHeight;
     })
     let coloron = false;
     let button1 = document.getElementById("button1")
-    button1.addEventListener("click",()=>{
+    button1.addEventListener("click",()=>{// toggle betwen actual pixel values to desired values given by the user 
         if(coloron==false){
             coloron =true
         }
@@ -74,10 +74,12 @@ let canvasWidth, canvasHeight;
                 let char = floor(map(avg, 0, 255, 0, len))   // maps the different characters in density with the different avg levels of the respective pixels
                 noStroke()
                 if(coloron==false){
-                    fill(r,g,b)
+                    fill(r,g,b)// actual pixel values 
+                    button1.innerHTML = "PIXEL COLOR ON"
                 }
                 else if(coloron==true){
-                     fill(value3)
+                     fill(value3)//value chosen from input field for the pixels 
+                     button1.innerHTML="PIXEL COLOR OFF"
                 }
                 textSize(value)
                 textAlign(CENTER, CENTER)
